@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import {findMexican} from "./controllers/CurpController";
+import {findMexicanByCURP} from "./controllers/CurpController";
 import {ensureIsValidApiKey} from "./middlewares/user";
 import { initializeApp } from 'firebase-admin/app';
 
@@ -20,7 +20,7 @@ app.get('/', (request: express.Request, response: express.Response) => {
     response.status(301).redirect("https://carlos-eduardo-sanchez-torres.sanchezcarlosjr.com/curp-renapo-api");
 });
 
-app.get('/curp/:curp', findMexican);
+app.get('/curp/:curp', findMexicanByCURP);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

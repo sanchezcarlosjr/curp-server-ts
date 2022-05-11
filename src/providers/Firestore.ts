@@ -1,4 +1,4 @@
-import { getFirestore } from 'firebase-admin/lib/firestore';
+import { getFirestore } from 'firebase-admin/firestore';
 import { Curp } from 'get-mexican-data-by-curp';
 import { Provider } from 'get-mexican-data-by-curp';
 import { GovernmentScrapperCache } from 'get-mexican-data-by-curp';
@@ -11,16 +11,13 @@ export class Firestore extends Provider implements GovernmentScrapperCache {
     ) {
         super();
     }
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     save(mexican: Mexican): Promise<any> {
         if (mexican === undefined || mexican.curp === undefined) {
             throw new Error('Provider error');
         }
         return getFirestore().collection('id').doc(mexican.curp).set(mexican);
     }
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     provide(curp: Curp) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
         return getFirestore()
             .doc(this.documentPath(curp.value))
             .get()
@@ -29,15 +26,12 @@ export class Firestore extends Provider implements GovernmentScrapperCache {
                     return null;
                 }
                 const data = document.data();
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 if (data.error) {
                     return {
                         curp: curp.value,
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                         error: data.error,
                     };
                 }
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-return
                 return data;
             });
     }

@@ -16,7 +16,7 @@ router.get('/', (request: express.Request, response: express.Response) =>
 
 import user from "../middlewares/user";
 import {query} from "express-validator";
-import {_error} from "../classes/error";
+import {ApplicationError} from "../classes/error";
 import * as curp from "../utils/curp";
 import validationResult from "../middlewares/validator";
 import {findMexicanByCURP} from "../controllers/CurpController";
@@ -25,13 +25,13 @@ router.get(
     '/curp',
     query("curp")
         .exists()
-        .withMessage(new _error('user', 'The query parameter --curp-- is missing.', 'Add the query parameter.'))
+        .withMessage(new ApplicationError('user', 'The query parameter --curp-- is missing.', 'Add the query parameter.'))
         .if(query("curp").exists())
         .toUpperCase()
         .custom((value) => {
             return curp.validFormat(value);
         })
-        .withMessage(new _error('user', 'The query parameter --curp-- submitted has invalid characters.', 'Correct the curp entered.')),
+        .withMessage(new ApplicationError('user', 'The query parameter --curp-- submitted has invalid characters.', 'Correct the curp entered.')),
     validationResult,
     findMexicanByCURP);
 

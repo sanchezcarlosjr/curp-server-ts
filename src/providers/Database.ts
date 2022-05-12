@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+require("dotenv").config();
 
 export class Database {
     private static database: Database | null = null;

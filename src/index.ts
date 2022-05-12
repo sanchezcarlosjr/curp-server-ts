@@ -1,27 +1,30 @@
 import * as express from 'express';
-import * as cors from 'cors';
-import {findMexicanByCURP} from "./controllers/CurpController";
-import {ensureIsValidApiKey} from "./middlewares/user";
-import { initializeApp } from 'firebase-admin/app';
+import * as admin from 'firebase-admin';
 
-initializeApp();
+import * as serviceAccount from '../service-account-credentials.json';
+require("dotenv").config();
+
+const params = {
+  type: serviceAccount.type,
+  projectId: serviceAccount.project_id,
+  privateKeyId: serviceAccount.private_key_id,
+  privateKey: serviceAccount.private_key,
+  clientEmail: serviceAccount.client_email,
+  clientId: serviceAccount.client_id,
+  authUri: serviceAccount.auth_uri,
+  tokenUri: serviceAccount.token_uri,
+  authProviderX509CertUrl: serviceAccount.auth_provider_x509_cert_url,
+  clientC509CertUrl: serviceAccount.client_x509_cert_url
+}
+admin.initializeApp({ credential: admin.credential.cert(params) });
 
 const PORT = process.env.PORT || 3000;
 
-const app = express();
+export const app = express();
 
-app.use(cors({
-    origin: '*'
-}));
-
-app.use(ensureIsValidApiKey);
-
-app.get('/', (request: express.Request, response: express.Response) => {
-    response.status(301).redirect("https://carlos-eduardo-sanchez-torres.sanchezcarlosjr.com/curp-renapo-api");
-});
-
-app.get('/curp/:curp', findMexicanByCURP);
+import routes from './routes';
+app.use(routes);
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`App listening on port ${PORT}`);
 });

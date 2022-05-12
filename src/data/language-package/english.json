@@ -1,0 +1,25 @@
+{
+  "general": {
+    "server": "server",
+    "user": "user"
+  },
+  "errors": {
+    "pathParameterMissing": "The path parameter --#{value}#-- is missing.",
+    "queryStringMissing": "The query string --#{value}#-- is missing.",
+    "queryStringLength": "The length of the query string --#{value}#-- is #{length}# characters.",
+    "translateNotFound": "Translation not found.",
+    "languageNotSupported": "Language not supported.",
+    "patternQueryStringInvalid": "The pattern of the query string --#{value}#-- is invalid.",
+    "patternCURPInvalid": "The CURP pattern is not valid."
+  },
+  "solution": {
+    "addPathParameter": "Add the path param --#{value}#--.",
+    "addQueryString": "Add the query string --#{value}#--.",
+    "languagesSupported": "Languages supported: English(en), Spanish(es).",
+    "specificLengthQueryString": "The length of the query string --#{value}#-- must be #{length}# characters.",
+    "moreInformation": "For more information, please visit: url(#{value}#)."
+  },
+  "successful": {
+    "ok": "It's ok"
+  }
+}

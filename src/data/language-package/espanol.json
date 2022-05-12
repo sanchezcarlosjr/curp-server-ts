@@ -1,0 +1,25 @@
+{
+  "general": {
+    "server": "servidor",
+    "user": "usuario"
+  },
+  "errors": {
+    "pathParameterMissing": "The path parameter --#{value}#-- is missing.",
+    "queryStringMissing": "Falta la cadena de consulta --#{value}#--.",
+    "queryStringLength": "La longitud de la cadena de consulta --#{value}#-- es de #{length}# caracteres.",
+    "translateNotFound": "Traducción no encontrada.",
+    "languageNotSupported": "Idioma no admitido.",
+    "patternQueryStringInvalid": "El patrón de la cadena de consulta --#{value}#-- no es válido.",
+    "patternCURPInvalid": "El patrón de la CURP no es válido."
+  },
+  "solution": {
+    "addPathParameter": "Añade el parámetro de ruta --#{value}#--.",
+    "addQueryString": "Añadir la cadena de consulta --#{value}#--.",
+    "languagesSupported": "Idiomas admitidos: Español(es), Ingles(en).",
+    "specificLengthQueryString": "La longitud de la cadena de consulta --#{value}#-- debe ser de #{length}# caracteres.",
+    "moreInformation": "Para más información, visite: url(#{value}#)."
+  },
+  "successful": {
+    "ok": "Está bien"
+  }
+}

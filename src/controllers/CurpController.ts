@@ -12,7 +12,7 @@ const mexicanFinder = new MexicanFinder(new Mongo(), new Firestore(), new Conect
 
 const findMexicanByCURP = async (request: Request, response: Response) => {
     try {
-        const {curp} = request.params;
+        const curp = request.query.curp as string;
         const mexican = await mexicanFinder.findByCurp(new Curp(curp));
         if (mexicanFinder.finalState() !== "Mongo") {
             await (new Mongo()).save(mexican as Mexican);

@@ -11,6 +11,25 @@ mexicanSchema.add({
     fatherName: {
         type: String
     },
+    rfc: {
+        type: String,
+        index: true,
+        required: false
+    },
+    isLRFC: {
+        type: Boolean,
+        default: null
+    },
+    isRegisteredInIMSS: {
+        type: Boolean,
+        default: false
+    },
+    nss: {
+        type: String,
+    },
+    idAssignmentNss: {
+       type: Number
+    },
     motherName: {
         type: String,
     },

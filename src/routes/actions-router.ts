@@ -8,7 +8,7 @@ import validationResult from "../middlewares/validator";
 import * as curp from "../utils/curp";
 import { getTranslate, languagesSupported } from "../utils/translater";
 
-import { _error } from "../classes/error";
+import { ApplicationError } from "../classes/error";
 
 //* MIDDLEWARES
 router.use(user);
@@ -20,7 +20,7 @@ router.get(
     .isIn(languagesSupported)
     .withMessage(
       (value) =>
-        new _error(
+        new ApplicationError(
           getTranslate("default", { group: "general", msg: "user" }),
           getTranslate("default", { group: "errors", msg: "languageNotSupported" }),
           getTranslate("default", { group: "solution", msg: "languagesSupported" })
@@ -31,7 +31,7 @@ router.get(
     .exists()
     .withMessage(
       (value, { req, location, path }) =>
-        new _error(
+        new ApplicationError(
           getTranslate(req.params?.language, { group: "general", msg: "user" }),
           getTranslate(req.params?.language, { group: "errors", msg: "queryStringMissing" }, [
             { code: "#{value}#", value: path },
@@ -45,7 +45,7 @@ router.get(
     .isLength({ min: 18, max: 18 })
     .withMessage(
       (value, { req, location, path }) =>
-        new _error(
+        new ApplicationError(
           getTranslate(req.params?.language, { group: "general", msg: "user" }),
           getTranslate(req.params?.language, { group: "errors", msg: "queryStringLength" }, [
             { code: "#{value}#", value: path },
@@ -69,14 +69,16 @@ router.get(
     })
     .withMessage(
       (value, { req, location, path }) =>
-        new _error(
+        new ApplicationError(
           getTranslate(req.params?.language, { group: "general", msg: "user" }),
           getTranslate(req.params?.language, { group: "errors", msg: "patternCURPInvalid" }),
-          getTranslate(
-            req.params?.language,
-            { group: "solution", msg: "moreInformation" },
-            [{ code: "#{value}#", value: "https://www.gob.mx/segob%7Crenapo/es/articulos/sabes-como-se-conforma-tu-curp?idiom=es" }]
-          )
+          getTranslate(req.params?.language, { group: "solution", msg: "moreInformation" }, [
+            {
+              code: "#{value}#",
+              value:
+                "https://www.gob.mx/segob%7Crenapo/es/articulos/sabes-como-se-conforma-tu-curp?idiom=es",
+            },
+          ])
         )
     ),
   validationResult,

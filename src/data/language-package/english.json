@@ -10,14 +10,19 @@
     "translateNotFound": "Translation not found.",
     "languageNotSupported": "Language not supported.",
     "patternQueryStringInvalid": "The pattern of the query string --#{value}#-- is invalid.",
-    "patternCURPInvalid": "The CURP pattern is not valid."
+    "patternCURPInvalid": "The CURP pattern is not valid.",
+    "dbCommunication": "Communication error with the database.",
+    "problemsAndOutages": "Problems and outages occur in our services."
   },
   "solution": {
     "addPathParameter": "Add the path param --#{value}#--.",
     "addQueryString": "Add the query string --#{value}#--.",
     "languagesSupported": "Languages supported: English(en), Spanish(es).",
     "specificLengthQueryString": "The length of the query string --#{value}#-- must be #{length}# characters.",
-    "moreInformation": "For more information, please visit: url(#{value}#)."
+    "moreInformation": "For more information, please visit: url(#{value}#).",
+    "tryAgain": "Please try again in a few minutes.",
+    "keepAnEye": "Keep an eye on our communication channels for the current status of our services.",
+    "automaticallyTicket": "A support ticket has been automatically created on your behalf. We apologise for any inconvenience this may cause you."
   },
   "successful": {
     "ok": "It's ok"

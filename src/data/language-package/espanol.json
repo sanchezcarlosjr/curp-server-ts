@@ -10,14 +10,19 @@
     "translateNotFound": "Traducción no encontrada.",
     "languageNotSupported": "Idioma no admitido.",
     "patternQueryStringInvalid": "El patrón de la cadena de consulta --#{value}#-- no es válido.",
-    "patternCURPInvalid": "El patrón de la CURP no es válido."
+    "patternCURPInvalid": "El patrón de la CURP no es válido.",
+    "dbCommunication": "Error de comunicación con la base de datos.",
+    "problemsAndOutages": "Se producen problemas y cortes en nuestros servicios."
   },
   "solution": {
     "addPathParameter": "Añade el parámetro de ruta --#{value}#--.",
     "addQueryString": "Añadir la cadena de consulta --#{value}#--.",
     "languagesSupported": "Idiomas admitidos: Español(es), Ingles(en).",
     "specificLengthQueryString": "La longitud de la cadena de consulta --#{value}#-- debe ser de #{length}# caracteres.",
-    "moreInformation": "Para más información, visite: url(#{value}#)."
+    "moreInformation": "Para más información, visite: url(#{value}#).",
+    "tryAgain": "Por favor, inténtelo de nuevo en unos minutos.",
+    "keepAnEye": "Esté atento a nuestros canales de comunicación para conocer el estado actual de nuestros servicios.",
+    "automaticallyTicket": "Se ha creado automáticamente un ticket de soporte en su nombre. Nos disculpamos por las molestias que esto pueda causarle."
   },
   "successful": {
     "ok": "Está bien"

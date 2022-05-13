@@ -1,4 +1,4 @@
-export class _error {
+export class ApplicationError {
   'by': string;
   'problem': string;
   'solution': string;

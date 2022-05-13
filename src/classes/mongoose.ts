@@ -2,7 +2,7 @@ import * as express from "express";
 import mongoose from "mongoose";
 
 import { Report } from "./report";
-import { processInfo } from "./error";
+import { ProcessInfo } from "./error";
 
 function Protect(target: any): void {
   Object.freeze(target);
@@ -21,7 +21,7 @@ const _file = "";
 @Protect
 export abstract class MongooseManager {
   static async connection(database: string, req: express.Request): Promise<mongoose.Connection | Boolean> {
-    const info = new processInfo(req.idApi, _file, "MongooseManager.connection()");
+    const info = new ProcessInfo(req.idApi, _file, "MongooseManager.connection()");
     if (MongoLocal.getStatus()) {
       const result = await this.getConnection(database);
       if (result.status === "OK") {

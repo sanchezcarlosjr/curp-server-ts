@@ -3,10 +3,12 @@ import * as fs from "fs";
 type data = {
   id: string;
   file: string;
-  nameProcess: string;
+  type: string;
+  process: string;
   position: number;
   error: string;
-  moreDetails: any;
+  furtherDetails: any;
+  parent: string;
 };
 type folders = "system" | "mongoose" | "firebase" | "email";
 type reportResponse = { date: Number; type: folders };

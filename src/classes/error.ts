@@ -9,7 +9,7 @@ export class ApplicationError {
   }
 }
 
-export class processInfo {
+export class ProcessInfo {
   id: string;
   file: string;
   nameProcess: string;
@@ -26,4 +26,4 @@ export class processInfo {
   }
 }
 
-new processInfo("", "", "").error = "asdasdasd"
+new ProcessInfo("", "", "").error = "asdasdasd"

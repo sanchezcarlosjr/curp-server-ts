@@ -47,8 +47,9 @@ async function getAPIRecord(req: express.Request, res: express.Response, next: e
     });
 }
 
-function test(req: express.Request, res: express.Response, next: express.NextFunction) {
-    console.log(req.headers['user-agent'])
+async function test(req: express.Request, res: express.Response, next: express.NextFunction) {
+    console.log(req.headers['user-agent']);
+    await ensureIsAValidApiKey(req, res, next);
     return next();
 }
 

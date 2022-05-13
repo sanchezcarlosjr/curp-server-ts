@@ -1,6 +1,5 @@
 import * as express from 'express';
 import * as admin from 'firebase-admin';
-
 import * as serviceAccount from '../service-account-credentials.json';
 require("dotenv").config();
 

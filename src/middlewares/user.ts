@@ -18,6 +18,7 @@ export const ensureIsValidApiKey = async function (request: express.Request, res
     next();
 }
 
+// Add the translate function
 async function getAPIRecord(req: express.Request, res: express.Response, next: express.NextFunction) {
     const apiKey: string = req.headers.apikey as string;
     if (!apiKey) return res.status(400).jsonp({ 'error': [new _error('user', 'API key not found.', 'Add the API key to the request header.')] });
@@ -26,10 +27,10 @@ async function getAPIRecord(req: express.Request, res: express.Response, next: e
         if (user.disabled) return res.status(403).jsonp({ 'error': [new _error('user', 'Your API Key is disabled.', 'For more information, please contact customer service.')] });
         req.user = {
             uid: user.uid,
-            email: user.email ?? 'err:user/missing-email',
+            email: user.email ?? 'err://user/missing-email',
             emailVerified: user.emailVerified,
-            displayName: user.displayName ?? 'err:user/missing-display-name',
-            phoneNumber: user.phoneNumber ?? 'err:user/missing-phone-number',
+            displayName: user.displayName ?? 'err://user/missing-display-name',
+            phoneNumber: user.phoneNumber ?? 'err://user/missing-phone-number',
         };
         return next();
     }).catch((error: any) => {
@@ -41,6 +42,12 @@ async function getAPIRecord(req: express.Request, res: express.Response, next: e
     });
 }
 
+function test(req: express.Request, res: express.Response, next: express.NextFunction) {
+    console.log(req.headers['user-agent'])
+    return next();
+}
+
 export default async function userMiddlwares(req: express.Request, res: express.Response, next: express.NextFunction) {
-    return getAPIRecord(req, res, next);
+    await getAPIRecord(req, res, next);
+    return test(req, res, next);
 }

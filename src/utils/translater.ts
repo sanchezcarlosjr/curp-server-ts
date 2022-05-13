@@ -10,7 +10,9 @@ type languagePackageErrors = {
     | "pathParameterMissing"
     | "languageNotSupported"
     | "patternQueryStringInvalid"
-    | "patternCURPInvalid";
+    | "patternCURPInvalid"
+    | "dbCommunication"
+    | "problemsAndOutages";
 };
 
 type languagePackageSuccessful = {
@@ -30,7 +32,10 @@ type languagePackageSolution = {
     | "addQueryString"
     | "languagesSupported"
     | "specificLengthQueryString"
-    | "moreInformation";
+    | "moreInformation"
+    | "tryAgain"
+    | "keepAnEye"
+    | "automaticallyTicket";
 };
 
 type languagePackage = {
@@ -46,6 +51,8 @@ type languagePackage = {
     translateNotFound: string;
     patternQueryStringInvalid: string;
     patternCURPInvalid: string;
+    dbCommunication: string;
+    problemsAndOutages: string;
   };
   solution: {
     addPathParameter: string;
@@ -53,11 +60,14 @@ type languagePackage = {
     languagesSupported: string;
     specificLengthQueryString: string;
     moreInformation: string;
+    tryAgain: string;
+    keepAnEye: string;
+    automaticallyTicket: string;
   };
   successful: { ok: string };
 };
 
-type languagesSupported = "es" | "en" | "default";
+export type languagesSupported = "es" | "en" | "default";
 export const languagesSupported: languagesSupported[] = ["en", "es"];
 
 export function getTranslate(
